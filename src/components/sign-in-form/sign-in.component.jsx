@@ -25,7 +25,7 @@ const SignInForm = () => {
 		const { password, confirmPassword } = formFields;
 
 		try {
-			const response = await signInAuthUserWithEmailAndPassword(
+			const { user } = await signInAuthUserWithEmailAndPassword(
 				email,
 				password
 			);
@@ -50,8 +50,7 @@ const SignInForm = () => {
 	};
 
 	const signInWithGoogle = async () => {
-		const { user } = await signInWithGooglePopup();
-		await createUserDocumentFromAuth(user);
+		await signInWithGooglePopup();
 	};
 	return (
 		<div className="sign-in-container">
